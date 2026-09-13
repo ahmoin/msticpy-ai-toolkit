@@ -19,7 +19,6 @@ source .venv/Scripts/activate   # Windows (bash/zsh shell)
 
 pip install -r requirements.txt
 
-cp msticpyconfig.yaml.example msticpyconfig.yaml
 cp .env.example .env
 # edit .env and set VIRUSTOTAL_API_KEY
 
@@ -39,12 +38,22 @@ pnpm install
 pnpm dev
 ```
 
-Frontend runs at `http://localhost:3000` and proxies `/api/alerts/enrich` to
+Frontend runs at `http://localhost:3000` and proxies its `/api/*` routes to
 the backend (`BACKEND_URL` in `.env.local`, defaults to
 `http://localhost:8000`).
 
-Open `http://localhost:3000` to see enriched alerts. If the backend isn't
-running, the page shows an error with a retry button.
+Open `http://localhost:3000` to test IOCs or upload alert data. If the
+backend isn't running, the panels show an error with a retry button.
+
+## Deploying
+
+- **Frontend** → Vercel. Set `BACKEND_URL` to the deployed backend's public
+  URL.
+- **Backend** → Railway (or another platform that runs a persistent
+  container, not serverless functions — msticpy's dependencies are too
+  heavy for typical serverless size limits, and its streaming endpoint
+  needs a long-lived process). See `backend/README.md` for the Railway
+  setup steps.
 
 ## Adding components
 
