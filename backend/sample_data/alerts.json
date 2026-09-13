@@ -1,0 +1,25 @@
+[
+  {
+    "alert_id": "alert-001",
+    "timestamp": "2026-09-10T14:32:11Z",
+    "title": "Suspicious outbound connection detected",
+    "severity": "medium",
+    "host": "WIN-DESKTOP-07",
+    "description": "Endpoint made an outbound HTTPS connection to a rarely-seen external IP shortly after a PowerShell process spawned.",
+    "iocs": [
+      { "ioc_type": "ipv4", "value": "185.220.101.45" },
+      { "ioc_type": "dns", "value": "update-service-cdn.net" }
+    ]
+  },
+  {
+    "alert_id": "alert-002",
+    "timestamp": "2026-09-10T14:33:47Z",
+    "title": "Suspicious file dropped in temp directory",
+    "severity": "high",
+    "host": "WIN-DESKTOP-07",
+    "description": "A file matching known loader characteristics was written to %TEMP% and executed.",
+    "iocs": [
+      { "ioc_type": "file_hash", "value": "44d88612fea8a8f36de82e1278abb02f" }
+    ]
+  }
+]
